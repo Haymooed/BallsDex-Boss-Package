@@ -24,18 +24,14 @@ An improved and refactored Boss Battle package for BallsDex 3.0 with full admin 
 2. Add `boss` to your `config.yml` under `packages`:
 
 ```yaml
-packages:
-  - ballsdex.packages.boss
+[[ballsdex.packages]]
+location = "git+https://github.com/Haymooed/BallsDex-Boss-Package.git"
+path = "boss"
+enabled = true
+editable = false
 ```
 
-3. Run migrations to create the database tables:
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-4. Create a Special called "Boss" in your admin panel:
+3. Create a Special called "Boss" in your admin panel:
    - Name: `Boss`
    - Rarity: `0`
    - End Date: Set to a far future date (e.g., 2124)
