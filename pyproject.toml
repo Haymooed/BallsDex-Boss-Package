@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "ballsdex-boss"
 version = "0.0.0"
 
-description = "A travelling merchant to sell balls."
+description = "Boss Battles."
 license = "MIT"
 authors = [
     { name = "Haymooed" },
