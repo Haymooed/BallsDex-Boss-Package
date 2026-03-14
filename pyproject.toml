@@ -1,14 +1,24 @@
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry]
+[project]
 name = "ballsdex-boss"
-version = "3.0.0"
-description = "Boss Battle package for BallsDex 3.0"
-authors = ["MoOfficial", "Hayden"]
-readme = "README.md"
-packages = [{include = "boss"}]
+version = "0.0.0"
 
-[tool.poetry.dependencies]
-python = "^3.10"
+description = "A travelling merchant to sell balls."
+license = "MIT"
+authors = [
+    { name = "Haymooed" },
+]
+readme = "README.md"
+
+dependencies = [
+
+]
+
+[project.urls]
+Repository = "https://github.com/Haymooed/BallsDex-Boss-Package"
+Documentation = "https://github.com/Haymooed/BallsDex-Boss-Package#readme"
+Issues = "https://github.com/Haymooed/BallsDex-Boss-Package/issues"
+Funding = "https://www.patreon.com/c/MarketDexOfficial"
