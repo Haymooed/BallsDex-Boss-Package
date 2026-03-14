@@ -2,11 +2,10 @@
 
 An improved and refactored Boss Battle package for BallsDex 3.0 with full admin panel integration.
 
-## Credits
-
-**Original Creator:** MoOfficial ([@moofficial on Discord](https://discord.com/users/moofficial))  
-**Original Repository:** [MoOfficial0000/BossPackageBD](https://github.com/MoOfficial0000/BossPackageBD)  
-**BallsDex 3.0 Conversion & Improvements:** Hayden
+> [!Important]
+> **Original Creator:** MoOfficial ([@moofficial on Discord](https://discord.com/users/moofficial))  
+> **Original Repository:** [MoOfficial0000/BossPackageBD](https://github.com/MoOfficial0000/BossPackageBD)  
+> **BallsDex 3.0 Conversion & Improvements:** Haymooed
 
 ## Features
 
