@@ -33,6 +33,16 @@ class BossSettingsAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+    
+    def changelist_view(self, request, extra_context=None):
+        if not BossSettings.objects.filter(pk=1).exists():
+            BossSettings.objects.create(pk=1)
+        return super().changelist_view(request, extra_context)
+    
+    def change_view(self, request, object_id, form_url='', extra_context=None):
+        if not BossSettings.objects.filter(pk=1).exists():
+            BossSettings.objects.create(pk=1)
+        return super().change_view(request, object_id, form_url, extra_context)
 
 
 class BattleParticipantInline(admin.TabularInline):

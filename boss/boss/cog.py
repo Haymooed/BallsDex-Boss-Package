@@ -16,7 +16,7 @@ from ballsdex.core.models import BallInstance, Player, balls, specials
 if TYPE_CHECKING:
     from ballsdex.core.bot import BallsDexBot
 
-from .models import (
+from boss.models import (
     BossSettings,
     BossBattle,
     BattleParticipant,
