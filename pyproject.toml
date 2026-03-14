@@ -1,0 +1,14 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "ballsdex-boss"
+version = "3.0.0"
+description = "Boss Battle package for BallsDex 3.0"
+authors = ["MoOfficial", "Hayden"]
+readme = "README.md"
+packages = [{include = "boss"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
