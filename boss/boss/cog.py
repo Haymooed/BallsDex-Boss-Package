@@ -9,9 +9,9 @@ from typing import TYPE_CHECKING
 from discord.ui import Button, View
 from datetime import datetime
 
-from ballsdex.settings import settings
+from settings.models import settings
+from bd_models.models import BallInstance, Player, Ball, Special
 from ballsdex.core.utils.transformers import BallInstanceTransform, BallTransform, SpecialEnabledTransform
-from ballsdex.core.models import BallInstance, Player, balls, specials
 
 if TYPE_CHECKING:
     from ballsdex.core.bot import BallsDexBot
@@ -461,20 +461,19 @@ class Boss(commands.GroupCog):
             battle.winner_id = winner_participant.discord_id
             await battle.asave()
             
-            boss_special = [x for x in specials.values() if x.name == "Boss"]
+            boss_special = await Special.objects.filter(name="Boss").afirst()
             if not boss_special:
                 return await interaction.followup.send(
                     "ERROR: 'Boss' special not found! Please create it in the admin panel.",
                     ephemeral=True
                 )
             
-            special = boss_special[0]
             player, _ = await Player.get_or_create(discord_id=winner_participant.discord_id)
             
             instance = await BallInstance.create(
                 ball=battle.boss_ball,
                 player=player,
-                special=special,
+                special=boss_special,
                 attack_bonus=0,
                 health_bonus=0
             )
