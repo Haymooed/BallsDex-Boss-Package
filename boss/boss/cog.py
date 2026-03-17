@@ -98,13 +98,12 @@ class JoinButton(View):
         )
 
 
-@app_commands.guilds(*settings.admin_guild_ids)
 class Boss(commands.GroupCog):
     """
     Boss Battle commands - Fight epic bosses for rare rewards!
     
     Original package by MoOfficial (@moofficial on Discord)
-    BallsDex 3.0 conversion by Hayden
+    BallsDex 3.0 conversion by haymooed
     """
 
     def __init__(self, bot: "BallsDexBot"):
@@ -835,30 +834,16 @@ class Boss(commands.GroupCog):
         
         if not participant:
             return await interaction.followup.send(
-                "You haven't joined this boss battle!",
+                "You haven't joined the current boss battle or have no stats yet.", 
                 ephemeral=True
             )
-        
-        status = "✅ Alive" if participant.is_alive else "💀 Dead"
-        
-        disqualified = await DisqualifiedPlayer.objects.filter(
-            battle=battle,
-            discord_id=interaction.user.id
-        ).afirst()
-        
-        if disqualified:
-            status = "🚫 Disqualified"
+            
+        status_emoji = "✅ Alive" if participant.is_alive else "💀 Dead"
         
         await interaction.followup.send(
-            f"**{battle.boss_ball.country} Boss Battle Stats**\n\n"
-            f"**Status:** {status}\n"
-            f"**Damage Dealt:** {participant.total_damage_dealt:,}\n"
-            f"**Damage Taken:** {participant.total_damage_taken:,}\n"
-            f"**Boss HP:** {battle.current_hp:,} / {battle.initial_hp:,}\n"
-            f"**Round:** {battle.current_round}",
+            f"**Your Boss Battle Stats ({battle.boss_ball.country}):**\n"
+            f"> **Status:** {status_emoji}\n"
+            f"> **Total Damage Dealt:** {participant.total_damage_dealt:,}\n"
+            f"> **Total Damage Taken:** {participant.total_damage_taken:,}",
             ephemeral=True
         )
-
-
-async def setup(bot: "BallsDexBot"):
-    await bot.add_cog(Boss(bot))
