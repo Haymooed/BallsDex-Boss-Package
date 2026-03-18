@@ -42,7 +42,7 @@ class Boss(commands.GroupCog):
     @bossadmin.command(name="start")
     @app_commands.check(is_owner_or_coowner)
     async def start(self, interaction: discord.Interaction, countryball: BallTransform, hp_amount: int):
-        """Start a boss battle (FIXED PERMISSIONS)"""
+        """Start a boss battle"""
 
         active_battle = await BossBattle.objects.filter(is_active=True).afirst()
         if active_battle:
