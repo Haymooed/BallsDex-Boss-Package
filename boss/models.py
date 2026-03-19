@@ -53,6 +53,12 @@ class BossSettings(models.Model):
 
 
 class BossBattle(models.Model):
+    class Weather(models.TextChoices):
+        CLEAR = "CLEAR", "Clear"
+        STORM = "STORM", "Storm (weaker common balls)"
+        BLESSING = "BLESS", "Blessing (stronger rare balls)"
+        FOG = "FOG", "Fog (weaker ultra-rare balls)"
+
     boss_ball = models.ForeignKey(
         Ball,
         on_delete=models.CASCADE,
@@ -85,6 +91,13 @@ class BossBattle(models.Model):
     start_image_url = models.URLField(null=True, blank=True)
     defend_image_url = models.URLField(null=True, blank=True)
     attack_image_url = models.URLField(null=True, blank=True)
+
+    weather = models.CharField(
+        max_length=10,
+        choices=Weather.choices,
+        default=Weather.CLEAR,
+        help_text="Weather condition affecting attack and defense",
+    )
     
     created_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(null=True, blank=True)
