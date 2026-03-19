@@ -44,7 +44,11 @@ class Boss(commands.GroupCog):
     async def start(self, interaction: discord.Interaction, countryball: BallTransform, hp_amount: int):
         """Start a boss battle"""
 
-        active_battle = await BossBattle.objects.filter(is_active=True).afirst()
+        active_battle = (
+            await BossBattle.objects.filter(is_active=True)
+            .select_related("boss_ball")
+            .afirst()
+        )
         if active_battle:
             return await interaction.response.send_message(
                 f"Battle already active with {active_battle.boss_ball.country}",
