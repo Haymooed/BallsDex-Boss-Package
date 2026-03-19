@@ -12,7 +12,8 @@ log = logging.getLogger("ballsdex.packages.boss")
 LOGO = textwrap.dedent(r"""
     +---------------------------------------+
     |      BallsDex Boss Pack v3.0         |
-    |        Licensed under MIT            |
+    |        Licensed under MIT             | 
+    |            BETA [0.1]                 |
     +---------------------------------------+
 """).strip()
 
